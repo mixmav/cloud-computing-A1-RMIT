@@ -1,0 +1,14 @@
+runtime: php73
+handlers:
+
+  # Serve a directory as a static resource.
+- url: /css
+  static_dir: css
+# Serve images and assets as static resources.
+- url: /(.+\.(gif|png|jpg))$
+  static_files: \1
+  upload: .+\.(gif|png|jpg)$
+
+# Serve php scripts.
+- url: .*
+  script: auto
