@@ -8,11 +8,15 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
         require 'registerpage.php';
         break;
 	
-		case '/login';
+	case '/login';
         require 'login.php';
         break;
 	case '/register';
         require 'register.php';
+        break;
+	
+	case '/logout';
+        require 'logout.php';
         break;
 
 	case '/forum';

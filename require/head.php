@@ -29,3 +29,8 @@ U|' \/ '|uU  /"\  u | \ |"|  U  /"\  u\ \   /"/u      __        __ U  /"\  u / _
 <body>
 
 <div id="container">
+	<?php
+		if (isset($_REQUEST['showMessage']) && $_REQUEST['showMessage'] != '') {
+			echo "<div class='php-message'>" . htmlspecialchars($_REQUEST['showMessage']) . "</div>";
+		}
+	?>
