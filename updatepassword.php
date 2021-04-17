@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require("require/helpers.php");
 
 require __DIR__ . '/vendor/autoload.php';

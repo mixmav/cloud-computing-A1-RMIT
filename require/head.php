@@ -31,6 +31,6 @@ U|' \/ '|uU  /"\  u | \ |"|  U  /"\  u\ \   /"/u      __        __ U  /"\  u / _
 <div id="container">
 	<?php
 		if (isset($_REQUEST['showMessage']) && $_REQUEST['showMessage'] != '') {
-			echo "<div class='php-message'>" . htmlspecialchars($_REQUEST['showMessage']) . "</div>";
+			echo "<div class='php-message'><i class='fa fa-radiation'></i>&nbsp;" . htmlspecialchars($_REQUEST['showMessage']) . "</div>";
 		}
 	?>

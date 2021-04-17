@@ -19,10 +19,20 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
         require 'logout.php';
         break;
 
-	case '/forum';
+	
+	case '/forumpage';
         require 'forumpage.php';
         break;
+	case '/forumpost';
+        require 'forumpost.php';
+        break;
 
+	case '/user';
+        require 'userpage.php';
+        break;
+	case '/update-password';
+        require 'updatepassword.php';
+        break;
 
 
 	case '/create_users';

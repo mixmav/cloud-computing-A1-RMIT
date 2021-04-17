@@ -3,7 +3,7 @@
 	require_once("require/helpers.php");
 
 	if (user_is_logged_in()) {
-		header("Location: /forum");
+		header("Location: /forumpage");
 		die();
 	}
 

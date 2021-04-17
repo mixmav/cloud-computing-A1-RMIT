@@ -2,9 +2,21 @@
 
 #container{
 	width: 100%;
-	max-width: 500px;
+	max-width: 600px;
 	margin: 0 auto;
 	padding: 2em;
+}
+
+#container .php-message{
+	padding: 1em;
+	padding-left: 0;
+	color: #F45B69;
+	font-weight: bold;
+}
+
+span.red-bold{
+	font-weight: bold;
+	color: #F45B69;
 }
 
 .z-depth-scrolled {
@@ -68,6 +80,8 @@ span {
 }
 
 .link{
+	color: #A63A50;
+	font-weight: bold;
 	display: inline-block;
 }
 
