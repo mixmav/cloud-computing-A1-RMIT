@@ -88,5 +88,5 @@ $transaction->update($forumMessage);
 $transaction->commit();
 
 
-header('Location: /user?showMessage=' . urlencode("Message successfully updated"));
+header('Location: /forumpage?showMessage=' . urlencode("Message successfully updated"));
 die();
