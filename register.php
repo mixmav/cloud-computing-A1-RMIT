@@ -68,9 +68,9 @@ if ($picture["size"] > 500000) {
 	die();
 }
 
-// Only allow jpg, jpeg, png, and gif file types
-if($imageFileType != "jpg" || $imageFileType != "jpeg" || $imageFileType != "png" || $imageFileType != "gif") {
-	header('Location: /registerpage?showMessage=' . urlencode("Error: Usupported image format"));
+// Only allow jpg files
+if($imageFileType != "jpg") {
+	header('Location: /registerpage?showMessage=' . urlencode("Error: Only .jpg images are supported"));
 	die();
 }
 
@@ -79,17 +79,20 @@ $file = fopen($picture['tmp_name'], 'r');
 $bucket = $storage->bucket("rmit-assignment-1");
 
 $object = $bucket->upload($file, [
-	'name' => "user_images/$id.$imageFileType"
+	'name' => "user_images/$id.jpg"
 ]);
 
+
+
 //User doesn't exist -- create one
-$user = $datastore->entity('user', [
+$key = $datastore->key('user', $id);
+$user = $datastore->entity($key, [
 	'id' => $id,
 	'user_name' => $username,
 	'password' => $password
 ]);
 
-$datastore->upsert($user);
+$datastore->insert($user);
 
 header('Location: /?showMessage=' . urlencode("User successfully created"));
 die();

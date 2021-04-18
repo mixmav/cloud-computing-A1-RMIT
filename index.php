@@ -33,6 +33,13 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
 	case '/update-password';
         require 'updatepassword.php';
         break;
+	
+	case '/editforummessagepage';
+        require 'editforummessagepage.php';
+        break;
+	case '/editforummessagepost';
+        require 'editforummessagepost.php';
+        break;
 
 
 	case '/create_users';

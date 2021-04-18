@@ -79,10 +79,26 @@ span {
 	color: inherit
 }
 
+i{
+	position: relative;
+	display: inline-block;	
+}
+
 .link{
-	color: #A63A50;
-	font-weight: bold;
+	color: #311847;
 	display: inline-block;
+	text-decoration: none;
+	transition: all .2s;
+	border-bottom: solid 1px #311847;
+}
+
+.link:hover{
+	color: #EC4067;
+	border-bottom-color: #EC4067;
+}
+
+.link i{
+	margin-right: 5px;
 }
 
 .text-input {

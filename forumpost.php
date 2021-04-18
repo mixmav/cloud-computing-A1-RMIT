@@ -20,7 +20,7 @@ $storage = new StorageClient([
 ]);
 
 
-$username = $_REQUEST['username'];
+$username = $_SESSION['user_name'];
 $subject = $_REQUEST['subject'];
 $message = $_REQUEST['message'];
 
@@ -28,7 +28,6 @@ $message = $_REQUEST['message'];
 $picture = $_FILES['picture'];
 
 $target_file = basename($picture["name"]);
-$uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 if(!getimagesize($picture["tmp_name"])) {
@@ -43,19 +42,22 @@ if ($picture["size"] > 500000) {
 }
 
 // Only allow jpg, jpeg, png, and gif file types
-if($imageFileType != "jpg" || $imageFileType != "jpeg" || $imageFileType != "png" || $imageFileType != "gif") {
+if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif") {
 	header('Location: /forumpage?showMessage=' . urlencode("Error: Usupported image format"));
 	die();
 }
 
-$unique_id = md5($username . uniqid(rand(), true));
+$unique_id = md5($username . uniqid(rand(), true)) . "." . $imageFileType;
 
-$forumMessage = $datastore->entity('ForumMessage', [
+$key = $datastore->key('ForumMessage', $unique_id);
+$date = new DateTime("now", new DateTimeZone('Australia/Melbourne'));
+
+$forumMessage = $datastore->entity($key, [
 	'uid' => $unique_id,
 	'user_name' => $username,
 	'subject' => $subject,
 	'message' => $message,
-	'updated_at' => date("Y-m-d h:i:sa")
+	'updated_at' => $date->format("d-m-Y h:i:sa")
 ]);
 
 $datastore->upsert($forumMessage);
@@ -66,7 +68,7 @@ $file = fopen($picture['tmp_name'], 'r');
 $bucket = $storage->bucket("rmit-assignment-1");
 
 $object = $bucket->upload($file, [
-	'name' => "forum_images/$unique_id.$imageFileType"
+	'name' => "forum_images/$unique_id"
 ]);
 
 

@@ -20,13 +20,16 @@ for ($i=0; $i < 10; $i++) {
 		}
 		$password .= abs($to_add);
 	}
+	
+	$id = "s3783375$i";
 
-	$user = $datastore->entity('user', [
-		'id' => "s3783375$i",
+	$key = $datastore->key('user', $id);
+	$user = $datastore->entity($key, [
+		'id' => $id,
 		'user_name' => "Manav Gadhoke$i",
 		'password' => $password
 	]);
 
-	$datastore->upsert($user);
+	$datastore->insert($user);
 	echo 'Saved ' . $user->key() . ': ' . $user['id'] . PHP_EOL;
 }

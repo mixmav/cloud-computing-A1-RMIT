@@ -13,9 +13,9 @@
 <h1>Register page</h1>
 
 <form action="/register" method="POST" class="mt-20" enctype="multipart/form-data">
-	<input type="text" placeholder="Your ID" class="text-input blue full-width" name="id" autofocus required>
-	<input type="text" placeholder="New username" class="text-input blue full-width mt-10" name="username" required>
-	<input type="password" placeholder="New password" class="text-input blue full-width mt-10" name="password" required>
+	<input type="text" placeholder="Your ID" class="text-input full-width" name="id" autofocus required>
+	<input type="text" placeholder="New username" class="text-input full-width mt-10" name="username" required>
+	<input type="password" placeholder="New password" class="text-input full-width mt-10" name="password" required>
 	<label for="pictureInput" class="mt-30" style="display: inline-block">
 		<input id="pictureInput" type="file" name="picture" required>
 	</label>
